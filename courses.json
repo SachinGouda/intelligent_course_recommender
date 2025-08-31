@@ -1,0 +1,658 @@
+[
+  {
+    "id": "c001",
+    "title": "Machine Learning Specialization",
+    "provider": "Coursera (Stanford/Andrew Ng)",
+    "description": "Foundational ML theory and practice including supervised learning, regression, classification, SVMs, and practical ML workflows.",
+    "skill_level": "intermediate",
+    "tags": [
+      "machine-learning",
+      "supervised-learning",
+      "math",
+      "python"
+    ],
+    "url": "https://www.coursera.org/specializations/machine-learning-introduction",
+    "cost": "paid",
+    "duration_hours": 60
+  },
+  {
+    "id": "c002",
+    "title": "Deep Learning Specialization",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "Neural networks, CNNs, RNNs, optimization, and practical tips for building deep learning systems.",
+    "skill_level": "intermediate",
+    "tags": [
+      "deep-learning",
+      "neural-networks",
+      "cnn",
+      "rnn",
+      "python"
+    ],
+    "url": "https://www.coursera.org/specializations/deep-learning",
+    "cost": "paid",
+    "duration_hours": 80
+  },
+  {
+    "id": "c003",
+    "title": "AI for Everyone",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "Non-technical overview of AI concepts, project scoping, and organizational impacts.",
+    "skill_level": "beginner",
+    "tags": [
+      "ai",
+      "strategy",
+      "non-technical"
+    ],
+    "url": "https://www.coursera.org/learn/ai-for-everyone",
+    "cost": "free",
+    "duration_hours": 10
+  },
+  {
+    "id": "c004",
+    "title": "Data Science MicroMasters",
+    "provider": "edX (UC San Diego)",
+    "description": "Statistics, probability, machine learning, and data visualization with practical projects.",
+    "skill_level": "intermediate",
+    "tags": [
+      "data-science",
+      "statistics",
+      "python",
+      "visualization"
+    ],
+    "url": "https://www.edx.org/micromasters/ucsandiegox-data-science",
+    "cost": "paid",
+    "duration_hours": 120
+  },
+  {
+    "id": "c005",
+    "title": "Python for Everybody",
+    "provider": "Coursera (UMich)",
+    "description": "Intro to Python programming, data structures, web access, databases, and basic data processing.",
+    "skill_level": "beginner",
+    "tags": [
+      "python",
+      "programming",
+      "data"
+    ],
+    "url": "https://www.coursera.org/specializations/python",
+    "cost": "free",
+    "duration_hours": 50
+  },
+  {
+    "id": "c006",
+    "title": "SQL for Data Science",
+    "provider": "Coursera (UC Davis)",
+    "description": "SQL basics, joins, aggregations, and working with real-world datasets for analytics.",
+    "skill_level": "beginner",
+    "tags": [
+      "sql",
+      "data",
+      "analytics"
+    ],
+    "url": "https://www.coursera.org/learn/sql-for-data-science",
+    "cost": "free",
+    "duration_hours": 15
+  },
+  {
+    "id": "c007",
+    "title": "Applied Data Science with Python",
+    "provider": "Coursera (UMich)",
+    "description": "Pandas, Matplotlib, Scikit-learn, text mining, and social network analysis.",
+    "skill_level": "intermediate",
+    "tags": [
+      "python",
+      "data-science",
+      "pandas",
+      "sklearn"
+    ],
+    "url": "https://www.coursera.org/specializations/data-science-python",
+    "cost": "paid",
+    "duration_hours": 70
+  },
+  {
+    "id": "c008",
+    "title": "Statistics with Python",
+    "provider": "Coursera (UMich)",
+    "description": "Descriptive statistics, inference, regression, ANOVA using Python.",
+    "skill_level": "beginner",
+    "tags": [
+      "statistics",
+      "python",
+      "math"
+    ],
+    "url": "https://www.coursera.org/specializations/statistics-with-python",
+    "cost": "paid",
+    "duration_hours": 45
+  },
+  {
+    "id": "c009",
+    "title": "Mathematics for Machine Learning",
+    "provider": "Coursera (Imperial)",
+    "description": "Linear algebra, calculus, and PCA foundations tailored to ML.",
+    "skill_level": "beginner",
+    "tags": [
+      "math",
+      "linear-algebra",
+      "calculus",
+      "ml"
+    ],
+    "url": "https://www.coursera.org/specializations/mathematics-machine-learning",
+    "cost": "free",
+    "duration_hours": 50
+  },
+  {
+    "id": "c010",
+    "title": "Intro to Machine Learning",
+    "provider": "Udacity",
+    "description": "Practical ML with scikit-learn, Naive Bayes, SVMs, decision trees, and evaluation techniques.",
+    "skill_level": "beginner",
+    "tags": [
+      "machine-learning",
+      "python",
+      "sklearn"
+    ],
+    "url": "https://www.udacity.com/course/intro-to-machine-learning--ud120",
+    "cost": "free",
+    "duration_hours": 40
+  },
+  {
+    "id": "c011",
+    "title": "Natural Language Processing Specialization",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "Classical and neural NLP, embeddings, transformers, and sequence models.",
+    "skill_level": "intermediate",
+    "tags": [
+      "nlp",
+      "transformers",
+      "embeddings",
+      "python"
+    ],
+    "url": "https://www.coursera.org/specializations/natural-language-processing",
+    "cost": "paid",
+    "duration_hours": 70
+  },
+  {
+    "id": "c012",
+    "title": "Generative AI with LLMs",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "Prompting, fine-tuning, RAG, safety, and deployment of LLM applications.",
+    "skill_level": "intermediate",
+    "tags": [
+      "generative-ai",
+      "llm",
+      "rag",
+      "prompt-engineering"
+    ],
+    "url": "https://www.coursera.org/learn/generative-ai-llms",
+    "cost": "free",
+    "duration_hours": 20
+  },
+  {
+    "id": "c013",
+    "title": "ML Ops Specialization",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "Data and model pipelines, CI/CD, monitoring, drift, and model governance.",
+    "skill_level": "intermediate",
+    "tags": [
+      "mlops",
+      "pipelines",
+      "monitoring",
+      "deployment"
+    ],
+    "url": "https://www.coursera.org/specializations/machine-learning-engineering-for-production-mlops",
+    "cost": "paid",
+    "duration_hours": 80
+  },
+  {
+    "id": "c014",
+    "title": "Practical Data Science on AWS",
+    "provider": "Coursera (AWS)",
+    "description": "Building scalable ML pipelines and deploying on AWS services.",
+    "skill_level": "intermediate",
+    "tags": [
+      "mlops",
+      "aws",
+      "pipelines",
+      "deployment"
+    ],
+    "url": "https://www.coursera.org/specializations/aws-machine-learning",
+    "cost": "paid",
+    "duration_hours": 60
+  },
+  {
+    "id": "c015",
+    "title": "Applied Computer Vision",
+    "provider": "Coursera (IBM)",
+    "description": "Image classification, detection, transfer learning, and OpenCV basics.",
+    "skill_level": "intermediate",
+    "tags": [
+      "computer-vision",
+      "cnn",
+      "transfer-learning"
+    ],
+    "url": "https://www.coursera.org/learn/computer-vision-basics",
+    "cost": "free",
+    "duration_hours": 25
+  },
+  {
+    "id": "c016",
+    "title": "Time Series Forecasting",
+    "provider": "Udemy",
+    "description": "ARIMA, SARIMA, Prophet, and deep learning approaches for time series.",
+    "skill_level": "intermediate",
+    "tags": [
+      "time-series",
+      "forecasting",
+      "python"
+    ],
+    "url": "https://www.udemy.com/course/time-series-forecasting/",
+    "cost": "paid",
+    "duration_hours": 20
+  },
+  {
+    "id": "c017",
+    "title": "Data Engineering Zoomcamp",
+    "provider": "DataTalksClub",
+    "description": "End-to-end data engineering: ingestion, warehousing, orchestration, batch/stream.",
+    "skill_level": "intermediate",
+    "tags": [
+      "data-engineering",
+      "etl",
+      "orchestration",
+      "spark"
+    ],
+    "url": "https://github.com/DataTalksClub/data-engineering-zoomcamp",
+    "cost": "free",
+    "duration_hours": 80
+  },
+  {
+    "id": "c018",
+    "title": "Intro to TensorFlow for AI",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "TensorFlow basics for building and training neural networks.",
+    "skill_level": "beginner",
+    "tags": [
+      "tensorflow",
+      "deep-learning",
+      "python"
+    ],
+    "url": "https://www.coursera.org/learn/introduction-tensorflow",
+    "cost": "free",
+    "duration_hours": 20
+  },
+  {
+    "id": "c019",
+    "title": "Intro to PyTorch",
+    "provider": "Udacity",
+    "description": "PyTorch tensors, autograd, building and training networks.",
+    "skill_level": "beginner",
+    "tags": [
+      "pytorch",
+      "deep-learning",
+      "python"
+    ],
+    "url": "https://www.udacity.com/course/deep-learning-pytorch--ud188",
+    "cost": "free",
+    "duration_hours": 20
+  },
+  {
+    "id": "c020",
+    "title": "Feature Engineering",
+    "provider": "Kaggle Learn",
+    "description": "Practical feature engineering techniques and leaky validation pitfalls.",
+    "skill_level": "beginner",
+    "tags": [
+      "feature-engineering",
+      "ml",
+      "python"
+    ],
+    "url": "https://www.kaggle.com/learn/feature-engineering",
+    "cost": "free",
+    "duration_hours": 8
+  },
+  {
+    "id": "c021",
+    "title": "Data Visualization with Python",
+    "provider": "Coursera (IBM)",
+    "description": "Matplotlib, Seaborn basics, dashboards, and storytelling with data.",
+    "skill_level": "beginner",
+    "tags": [
+      "visualization",
+      "python",
+      "data-storytelling"
+    ],
+    "url": "https://www.coursera.org/learn/python-for-data-visualization",
+    "cost": "free",
+    "duration_hours": 20
+  },
+  {
+    "id": "c022",
+    "title": "Data Structures & Algorithms",
+    "provider": "Coursera (UCSD)",
+    "description": "Core DSA, complexity analysis, and problem solving patterns.",
+    "skill_level": "intermediate",
+    "tags": [
+      "dsa",
+      "algorithms",
+      "coding-interviews"
+    ],
+    "url": "https://www.coursera.org/specializations/data-structures-algorithms",
+    "cost": "paid",
+    "duration_hours": 100
+  },
+  {
+    "id": "c023",
+    "title": "Linear Algebra Refresher",
+    "provider": "Udemy",
+    "description": "Vectors, matrices, eigenvalues/eigenvectors, and applications in ML.",
+    "skill_level": "beginner",
+    "tags": [
+      "math",
+      "linear-algebra"
+    ],
+    "url": "https://www.udemy.com/course/linear-algebra-refresher-course/",
+    "cost": "paid",
+    "duration_hours": 12
+  },
+  {
+    "id": "c024",
+    "title": "Probability & Statistics",
+    "provider": "edX (MIT)",
+    "description": "Probability theory, random variables, distributions, estimators, and inference.",
+    "skill_level": "intermediate",
+    "tags": [
+      "math",
+      "probability",
+      "statistics"
+    ],
+    "url": "https://www.edx.org/course/introduction-to-probability",
+    "cost": "paid",
+    "duration_hours": 70
+  },
+  {
+    "id": "c025",
+    "title": "Practical NLP with spaCy",
+    "provider": "Udemy",
+    "description": "Tokenization, NER, text classification, and pipelines with spaCy.",
+    "skill_level": "intermediate",
+    "tags": [
+      "nlp",
+      "spacy",
+      "text-classification"
+    ],
+    "url": "https://www.udemy.com/course/nlp-with-spacy/",
+    "cost": "paid",
+    "duration_hours": 16
+  },
+  {
+    "id": "c026",
+    "title": "R Programming",
+    "provider": "Coursera (Johns Hopkins)",
+    "description": "R language fundamentals oriented towards data analysis and visualization.",
+    "skill_level": "beginner",
+    "tags": [
+      "r",
+      "data-science"
+    ],
+    "url": "https://www.coursera.org/learn/r-programming",
+    "cost": "free",
+    "duration_hours": 25
+  },
+  {
+    "id": "c027",
+    "title": "Data Science with R",
+    "provider": "edX (HarvardX)",
+    "description": "Data wrangling, visualization with ggplot2, inference, and modeling in R.",
+    "skill_level": "beginner",
+    "tags": [
+      "r",
+      "data-science",
+      "visualization"
+    ],
+    "url": "https://www.edx.org/professional-certificate/harvardx-data-science",
+    "cost": "paid",
+    "duration_hours": 100
+  },
+  {
+    "id": "c028",
+    "title": "Reinforcement Learning",
+    "provider": "Coursera (Alberta)",
+    "description": "Foundations of RL, dynamic programming, Monte Carlo, TD learning, and function approximation.",
+    "skill_level": "advanced",
+    "tags": [
+      "reinforcement-learning",
+      "python",
+      "control"
+    ],
+    "url": "https://www.coursera.org/specializations/reinforcement-learning",
+    "cost": "paid",
+    "duration_hours": 80
+  },
+  {
+    "id": "c029",
+    "title": "Graph Machine Learning",
+    "provider": "Udemy",
+    "description": "Graph theory, node embeddings, GNNs, and real-world graph ML applications.",
+    "skill_level": "advanced",
+    "tags": [
+      "graph-ml",
+      "gnn",
+      "embeddings"
+    ],
+    "url": "https://www.udemy.com/course/graph-machine-learning-and-networks/",
+    "cost": "paid",
+    "duration_hours": 25
+  },
+  {
+    "id": "c030",
+    "title": "Vector Databases & RAG",
+    "provider": "Udemy",
+    "description": "Concepts of embeddings, FAISS/Chroma, chunking, and building RAG pipelines.",
+    "skill_level": "intermediate",
+    "tags": [
+      "rag",
+      "vector-db",
+      "faiss",
+      "chroma"
+    ],
+    "url": "https://www.udemy.com/course/vector-databases-and-rag/",
+    "cost": "paid",
+    "duration_hours": 12
+  },
+  {
+    "id": "c031",
+    "title": "LangChain for LLM Apps",
+    "provider": "Udemy",
+    "description": "Building RAG, agents, tools, and memory with LangChain.",
+    "skill_level": "intermediate",
+    "tags": [
+      "langchain",
+      "llm",
+      "agents"
+    ],
+    "url": "https://www.udemy.com/course/langchain/",
+    "cost": "paid",
+    "duration_hours": 14
+  },
+  {
+    "id": "c032",
+    "title": "Docker & Kubernetes for ML",
+    "provider": "Udemy",
+    "description": "Containerizing ML apps, K8s basics, and production deployment patterns.",
+    "skill_level": "intermediate",
+    "tags": [
+      "mlops",
+      "docker",
+      "k8s",
+      "deployment"
+    ],
+    "url": "https://www.udemy.com/course/docker-and-kubernetes-the-complete-guide/",
+    "cost": "paid",
+    "duration_hours": 30
+  },
+  {
+    "id": "c033",
+    "title": "Prompt Engineering",
+    "provider": "Coursera (Vanderbilt)",
+    "description": "Prompt patterns, system/user prompts, evaluation, and guardrails.",
+    "skill_level": "beginner",
+    "tags": [
+      "prompt-engineering",
+      "llm",
+      "generative-ai"
+    ],
+    "url": "https://www.coursera.org/learn/prompt-engineering",
+    "cost": "free",
+    "duration_hours": 10
+  },
+  {
+    "id": "c034",
+    "title": "System Design Fundamentals",
+    "provider": "Udemy",
+    "description": "Scalable systems, microservices, caching, and interview prep.",
+    "skill_level": "intermediate",
+    "tags": [
+      "system-design",
+      "architecture",
+      "backend"
+    ],
+    "url": "https://www.udemy.com/course/system-design-fundamentals/",
+    "cost": "paid",
+    "duration_hours": 20
+  },
+  {
+    "id": "c035",
+    "title": "Snowflake for Data Engineering",
+    "provider": "Udemy",
+    "description": "Data modeling, ELT pipelines, and performance tuning in Snowflake.",
+    "skill_level": "intermediate",
+    "tags": [
+      "data-engineering",
+      "snowflake",
+      "elt"
+    ],
+    "url": "https://www.udemy.com/course/snowflake-for-data-engineers/",
+    "cost": "paid",
+    "duration_hours": 16
+  },
+  {
+    "id": "c036",
+    "title": "BigQuery for Analytics",
+    "provider": "Coursera (Google)",
+    "description": "Hands-on SQL analytics on Google BigQuery and data warehousing concepts.",
+    "skill_level": "beginner",
+    "tags": [
+      "sql",
+      "bigquery",
+      "analytics"
+    ],
+    "url": "https://www.coursera.org/learn/bigquery-analytics",
+    "cost": "free",
+    "duration_hours": 12
+  },
+  {
+    "id": "c037",
+    "title": "Apache Spark with Python",
+    "provider": "Udemy",
+    "description": "PySpark, Spark SQL, and MLlib for large-scale data processing.",
+    "skill_level": "intermediate",
+    "tags": [
+      "spark",
+      "pyspark",
+      "mllib"
+    ],
+    "url": "https://www.udemy.com/course/apache-spark-with-python/",
+    "cost": "paid",
+    "duration_hours": 25
+  },
+  {
+    "id": "c038",
+    "title": "ETL with Airflow",
+    "provider": "Udemy",
+    "description": "Building, scheduling, and monitoring ETL pipelines using Apache Airflow.",
+    "skill_level": "intermediate",
+    "tags": [
+      "airflow",
+      "etl",
+      "orchestration"
+    ],
+    "url": "https://www.udemy.com/course/the-complete-hands-on-course-to-master-apache-airflow/",
+    "cost": "paid",
+    "duration_hours": 18
+  },
+  {
+    "id": "c039",
+    "title": "Computer Vision with Transformers",
+    "provider": "Coursera (DeepLearning.AI)",
+    "description": "ViTs, DETR, and modern transformer-based vision pipelines.",
+    "skill_level": "advanced",
+    "tags": [
+      "computer-vision",
+      "transformers",
+      "vit"
+    ],
+    "url": "https://www.coursera.org/learn/computer-vision-transformers",
+    "cost": "paid",
+    "duration_hours": 15
+  },
+  {
+    "id": "c040",
+    "title": "LLMOps: Serving & Monitoring",
+    "provider": "Udemy",
+    "description": "Serving LLMs, latency/throughput optimization, evaluations, and observability.",
+    "skill_level": "advanced",
+    "tags": [
+      "llmops",
+      "deployment",
+      "monitoring"
+    ],
+    "url": "https://www.udemy.com/course/llmops/",
+    "cost": "paid",
+    "duration_hours": 20
+  },
+  {
+    "id": "c041",
+    "title": "Intro to Data Analysis",
+    "provider": "Kaggle Learn",
+    "description": "Exploratory data analysis, cleaning, and building simple models.",
+    "skill_level": "beginner",
+    "tags": [
+      "eda",
+      "python",
+      "analytics"
+    ],
+    "url": "https://www.kaggle.com/learn/data-analysis",
+    "cost": "free",
+    "duration_hours": 8
+  },
+  {
+    "id": "c042",
+    "title": "Effective ML Interviews",
+    "provider": "Udemy",
+    "description": "What to study, system design for ML, and case studies for interviews.",
+    "skill_level": "intermediate",
+    "tags": [
+      "interviews",
+      "ml",
+      "system-design"
+    ],
+    "url": "https://www.udemy.com/course/effective-ml-interviews/",
+    "cost": "paid",
+    "duration_hours": 12
+  },
+  {
+    "id": "c043",
+    "title": "Responsible AI",
+    "provider": "Coursera (Microsoft)",
+    "description": "AI ethics, fairness, privacy, transparency, and responsible deployment.",
+    "skill_level": "beginner",
+    "tags": [
+      "ethics",
+      "responsible-ai",
+      "governance"
+    ],
+    "url": "https://www.coursera.org/learn/responsible-ai",
+    "cost": "free",
+    "duration_hours": 12
+  }
+]

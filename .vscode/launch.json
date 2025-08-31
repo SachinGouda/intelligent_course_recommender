@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Streamlit",
+      "type": "python",
+      "request": "launch",
+      "module": "streamlit",
+      "args": [
+        "run",
+        "streamlit_app.py"
+      ],
+      "cwd": "C:/Users/patil/OneDrive/Desktop/Python_learnings/In time tech/intelligent_course_recommender"
+    }
+  ]
+}
