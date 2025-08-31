@@ -5,12 +5,27 @@ import uuid
 import time
 import datetime
 from typing import List, Dict, Any, Tuple
+import httpx
 
 import streamlit as st
 
 # Embeddings
 from sentence_transformers import SentenceTransformer, util
 import numpy as np
+
+
+# OpenAI integration
+from openai import OpenAI
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
+OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+USE_OPENAI = bool(OPENAI_API_KEY)
+if USE_OPENAI:
+    client = OpenAI(api_key=OPENAI_API_KEY,http_client = httpx.Client(verify=False))
+else:
+    client = None
 
 APP_TITLE = "Intelligent Course Recommender & Learning Path Q&A"
 COURSE_PATH = os.path.join(os.path.dirname(__file__), "courses.json")
@@ -47,14 +62,33 @@ def ensure_user(store: Dict[str, Any], user_id: str) -> Dict[str, Any]:
     return store
 
 # ----------------- Embedding Model -----------------
+
+# Embedding model selection
 @st.cache_resource
 def get_model():
-    # A small, fast general-purpose model.
+    if USE_OPENAI:
+        return None  # No local model needed
     return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
 
 # ----------------- Recommendation Core -----------------
+
 def embed_texts(model, texts: List[str]) -> np.ndarray:
-    return model.encode(texts, convert_to_numpy=True, show_progress_bar=False, normalize_embeddings=True)
+    if USE_OPENAI:
+        # Use OpenAI text-embedding-ada-002
+        emb_list = []
+        for text in texts:
+            resp = client.embeddings.create(
+                input=text,
+                model="text-embedding-ada-002"
+            )
+            emb_list.append(np.array(resp.data[0].embedding, dtype=np.float32))
+        arr = np.stack(emb_list)
+        # Normalize embeddings
+        norms = np.linalg.norm(arr, axis=1, keepdims=True)
+        arr = arr / np.where(norms == 0, 1, norms)
+        return arr
+    else:
+        return model.encode(texts, convert_to_numpy=True, show_progress_bar=False, normalize_embeddings=True)
 
 def build_user_text(profile: Dict[str, str]) -> str:
     parts = []
@@ -108,7 +142,7 @@ def adjust_user_vector(user_vec: np.ndarray, liked_vecs: List[np.ndarray], disli
 
 # ----------------- Q&A (RAG-lite) -----------------
 def retrieve_kb_chunks(model, kb_text: str, query: str, k: int = 3) -> List[str]:
-    # Simple splitter by sections
+    # Fast numpy similarity for both local and OpenAI embeddings
     chunks = [ch.strip() for ch in kb_text.split("\n\n") if ch.strip()]
     chunk_embs = embed_texts(model, chunks)
     q_vec = embed_texts(model, [query])[0]
@@ -117,12 +151,38 @@ def retrieve_kb_chunks(model, kb_text: str, query: str, k: int = 3) -> List[str]
     return [chunks[i] for i in idxs]
 
 def answer_question_with_context(query: str, context_chunks: List[str], user_profile: Dict[str, str]) -> str:
-    # Pure prompt-engineering fallback without external LLM (rule-based synthesis).
-    # We stitch the most relevant chunks and craft a coherent answer using templates.
+    profile_line = build_user_text(user_profile)
+    context = "\n---\n".join(context_chunks)
+    if USE_OPENAI:
+        # Use GPT-4o for Q&A
+        prompt = (
+            f"User Context: {profile_line}\n"
+            f"Knowledge Base:\n{context}\n"
+            f"Question: {query}\n"
+            "Answer in a detailed, practical, and personalized way. "
+            "Provide actionable steps, learning paths, and career advice. "
+            "If relevant, recommend specific courses, skills, or resources. "
+            "Be concise but thorough, and always ground your answer in the provided knowledge base."
+        )
+        try:
+            response = client.chat.completions.create(
+                model="gpt-4o",
+                messages=[{"role": "system", "content": "You are an expert course recommender, learning path designer, and career advisor. You provide practical, actionable, and personalized advice for learners in data science, machine learning, and related fields. Always ground your answers in the provided knowledge base and user context."},
+                          {"role": "user", "content": prompt}],
+                max_tokens=500,
+                temperature=0.7
+            )
+            return response.choices[0].message.content.strip()
+        except Exception as e:
+            return f"[OpenAI error: {e}]\nFallback to local answer.\n" + _local_answer_question_with_context(query, context_chunks, user_profile)
+    else:
+        return _local_answer_question_with_context(query, context_chunks, user_profile)
+
+# Local fallback for Q&A
+def _local_answer_question_with_context(query: str, context_chunks: List[str], user_profile: Dict[str, str]) -> str:
     profile_line = build_user_text(user_profile)
     preface = f"User Context: {profile_line}\nQuestion: {query}\n"
     context = "\n---\n".join(context_chunks)
-    # Heuristic summary: select sentences that mention key terms from the query
     key_terms = [w.lower() for w in query.split() if len(w) > 3]
     selected_lines = []
     for ch in context_chunks:

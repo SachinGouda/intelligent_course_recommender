@@ -10,5 +10,11 @@
     "liked_courses": [],
     "disliked_courses": [],
     "profile_history": []
+  },
+  "dummy": {
+    "tag_preferences": {},
+    "liked_courses": [],
+    "disliked_courses": [],
+    "profile_history": []
   }
 }

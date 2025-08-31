@@ -1,4 +1,6 @@
 
-streamlit 
-sentence-transformers 
+streamlit
+sentence-transformers
 numpy
+openai
+python-dotenv

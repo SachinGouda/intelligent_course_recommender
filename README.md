@@ -1,82 +1,117 @@
-# Intelligent Course Recommender & Learning Path Q&A
+# Intelligent Course Recommender & Learning Path Q&A 🎓
 
-A mini app that recommends courses and answers learning path questions using embeddings + a feedback loop.
+A mini app that recommends courses and answers learning path questions using **embeddings + a feedback loop**, with optional OpenAI integration for richer Q&A.
 
-## Features
-- **User Profile Input**: background, interests, goals, skills.
-- **Course Recommendation Engine**: 40 curated online courses with provider, tags, difficulty, cost, duration.
-- **Embeddings**: SentenceTransformers (`all-MiniLM-L6-v2`) for user profile & course similarity.
-- **Feedback Learning Loop** (threefold):
-  1) **Tag Preference Modeling** — like/dislike updates per-tag scores and re-ranks.
-  2) **Vector Adjustment** — user embedding is nudged toward liked courses, away from disliked ones.
-  3) **Persistent Storage** — feedback stored in `feedback_store.json`.
-- **Learning Path Q&A Agent**: simple RAG over a small knowledge base (kb.md). No external LLM required, but easy to extend.
-- **Filters**: by difficulty, provider keywords, and cost.
+> For detailed design and architecture, see [DESIGN_NOTE.md](./DESIGN_NOTE.md).
+
+---
+
+## 🌿 Branches
+This repo has **two branches** to demonstrate evolution:
+
+- **`main` (baseline)**  
+  - HuggingFace embeddings only (`all-MiniLM-L6-v2`).  
+  - Rule-based Q&A, no external API.  
+  - Fully local, lightweight.  
+
+- **`openai-enhanced` (extended)**  
+  - Adds OpenAI integration:  
+    - `text-embedding-ada-002` embeddings.  
+    - GPT-4o chat completion for Q&A (with local fallback).  
+  - Shows rationale scores and improved feedback loop.  
+
+👉 Use `main` for a local-only.  
+👉 Use `openai-enhanced` for the richer version.
+
+---
+
+## ✨ Features
+- **User Profile Input**: capture background, interests, goals, and skills.
+- **Course Recommendation Engine**: ~40 curated courses (`courses.json`) with provider, tags, difficulty, cost, and duration.
+- **Embeddings**:  
+  - Local: SentenceTransformers (`all-MiniLM-L6-v2`).  
+  - Optional: OpenAI `text-embedding-ada-002` if API key is provided.  
+- **Feedback Learning Loop**:  
+  1. **Tag Preference Modeling** — like/dislike updates per-tag scores and re-ranks.  
+  2. **Vector Adjustment** — user embedding nudged toward liked courses, away from disliked ones.  
+  3. **Persistent Storage** — stored in `feedback_store.json` for session-to-session learning.  
+- **Learning Path Q&A Agent**:  
+  - Local: simple RAG over `kb.md`.  
+  - Optional: GPT-4o with profile + KB context.  
+- **Filters**: by difficulty, provider, and cost.  
 - **Interface**: Streamlit.
 
-## Tech Stack
-- Python 3.9+
-- sentence-transformers
-- numpy
-- streamlit
+---
 
-## Quickstart
+## 🛠️ Tech Stack
+- Python 3.9+  
+- [streamlit](https://streamlit.io)  
+- [sentence-transformers](https://www.sbert.net)  
+- numpy  
+- openai (optional)  
+- python-dotenv  
 
+---
+
+## 🚀 Quickstart
+
+Install dependencies:
 ```bash
-pip install -U streamlit sentence-transformers numpy
+pip install -r requirements.txt
+```
+
+Run the app:
+```bash
 streamlit run streamlit_app.py
 ```
 
-The app reads `courses.json` and `kb.md` in the same directory and writes feedback to `feedback_store.json`.
+Files used:
+- `courses.json` — course dataset  
+- `kb.md` — knowledge base for Q&A  
+- `feedback_store.json` — created at runtime  
 
-## How it Works
+---
 
-1. We construct a user text from profile fields and embed it using `all-MiniLM-L6-v2`.
-2. We embed all courses once and cache them. We compute cosine similarity (via normalized dot product).
-3. We compute a **base tag score** from your learned tag preferences and min-max normalize it.
-4. Final score = `0.8 * similarity + 0.2 * tag_score`. You can tune these weights.
-5. On **like**: add course to likes, increment tag preferences by +1.0, and nudge the user vector toward liked courses.
-6. On **dislike**: add to dislikes, decrement tag preferences by -0.7, and nudge user vector away.
-7. Q&A: retrieve the top 3 KB chunks using embeddings; a rule-based synthesis produces a short, grounded answer with personalization hints.
+## ⚙️ How it Works
+1. Build user text from profile (background, interests, goals, skills).  
+2. Embed user profile + all courses.  
+3. Compute similarity.
+4. On 👍 like: increment tag scores, nudge vector toward course.  
+5. On 👎 dislike: decrement tag scores, nudge vector away.  
+6. Persist feedback in `feedback_store.json`.  
+7. Q&A: retrieve top KB chunks → answer with GPT-4o or rule-based fallback.
 
-## Sample Input/Output
+---
+
+## 📂 File Structure
+- `streamlit_app.py` — main app  
+- `courses.json` — course dataset (~40 items)  
+- `kb.md` — knowledge base for Q&A  
+- `feedback_store.json` — feedback persistence (auto-created)  
+- `DESIGN_NOTE.md` — architecture & design details  
+
+---
+
+## 📖 Sample Input/Output
 
 **Profile**
-- Background: "Final-year CS student"
-- Interests: "AI, Data Science, MLOps"
-- Goals: "Become an ML Engineer at a product company"
-- Skills: "Python: intermediate, Math: beginner, SQL: intermediate"
+- Background: *"Final-year CS student"*  
+- Interests: *"AI, Data Science, MLOps"*  
+- Goals: *"Become an ML Engineer at a product company"*  
+- Skills: *"Python: intermediate, Math: beginner, SQL: intermediate"*  
 
-**Top Recommendations (example)**
-- Generative AI with LLMs (DeepLearning.AI)
-- ML Ops Specialization (DeepLearning.AI)
-- LangChain for LLM Apps (Udemy)
-- Mathematics for Machine Learning (Imperial / Coursera)
-- Intro to TensorFlow for AI (DeepLearning.AI)
+**Recommendations (example)**
+1. Generative AI with LLMs — Coursera (DeepLearning.AI)  
+2. ML Ops Specialization — Coursera (DeepLearning.AI)  
+3. LangChain for LLM Apps — Udemy  
+4. Mathematics for Machine Learning — Coursera (Imperial)  
+5. Intro to TensorFlow for AI — Coursera (DeepLearning.AI)  
 
 **Q&A Example**
-- Q: "Should I learn Python or R for data science?"
-- A (summary): If you're targeting ML engineering and deployment, **Python** is the better first choice; pick **R** for statistics-heavy or research workflows.
+- Q: *“Should I learn Python or R for data science?”*  
+- A: *Python* is better for ML engineering & deployment; *R* is better for statistics-heavy or research workflows.  
 
-## Design Choices
+---
 
-- **Local-by-default**: Uses a compact, widely-available embedding model for fast inference and easy setup.
-- **Transparent feedback**: Tag preferences are visible and editable by resetting.
-- **Sane heuristics**: Gentle vector nudges + tag-based re-ranking keep behavior stable but adaptive.
-- **RAG-lite**: No external LLM required; swapping to an API is straightforward (plug your call inside `answer_question_with_context`).
-
-## Possible Improvements
-- Swap to FAISS/Chroma for larger datasets or multi-tenant setups.
-- Add multi-criteria scoring (cost, duration) with user-set weights.
-- Add full LLM Q&A with grounding and citations.
-- Cold-start tag inference from profile (e.g., NER on profile text to seed tags).
-- Session management, auth, and exporting learning paths as PDFs.
-
-## File Structure
-- `streamlit_app.py` — main app
-- `courses.json` — course dataset (40 items)
-- `kb.md` — knowledge base for Q&A
-- `feedback_store.json` — created at runtime
-
-## License
+## 📌 License
 MIT
