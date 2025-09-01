@@ -1,6 +1,6 @@
 # Intelligent Course Recommender & Learning Path Q&A 🎓
 
-A mini app that recommends courses and answers learning path questions using **embeddings + a feedback loop**, with optional OpenAI integration for richer Q&A.
+A mini app that recommends courses and answers learning path questions using **embeddings + a feedback loop**, with optional OpenAI integration for richer Q&A. If no OpenAI API key is provided, the app automatically falls back to local models and rule-based Q&A.
 
 > For detailed design and architecture, see [DESIGN_NOTE.md](./DESIGN_NOTE.md).
 
@@ -19,9 +19,10 @@ This repo has **two branches** to demonstrate evolution:
     - `text-embedding-ada-002` embeddings.  
     - GPT-4o chat completion for Q&A (with local fallback).  
   - Shows rationale scores and improved feedback loop.  
+  - **Works with or without OpenAI API key**: If no key is provided, falls back to local models and logic automatically.
 
-👉 Use `main` for a local-only.  
-👉 Use `openai-enhanced` for the richer version.
+👉 Use `main` for a local-only experience.  
+👉 Use `openai-enhanced` for the richer version (local or OpenAI-enabled).
 
 ---
 
@@ -75,7 +76,7 @@ Files used:
 ## ⚙️ How it Works
 1. Build user text from profile (background, interests, goals, skills).  
 2. Embed user profile + all courses.  
-3. Compute similarity.
+3. Compute similarity and tag-based scores.
 4. On 👍 like: increment tag scores, nudge vector toward course.  
 5. On 👎 dislike: decrement tag scores, nudge vector away.  
 6. Persist feedback in `feedback_store.json`.  
