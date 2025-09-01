@@ -7,7 +7,7 @@ This application provides intelligent course recommendations and career learning
 ### Key Components
 
 - **User Profile Input:** Sidebar form captures background, interests, goals, and skills.
--- **Course Recommendation Engine:** Uses a static dataset (`courses.json`) of 30–50 online courses, each with title, provider, description, skill level, and tags. User profile and course descriptions are encoded using either OpenAI Embeddings (`text-embedding-ada-002`) or SentenceTransformers. Top courses are recommended using three modes:
+- **Course Recommendation Engine:** Uses a static dataset (`courses.json`) of 30–50 online courses, each with title, provider, description, skill level, and tags. User profile and course descriptions are encoded using either OpenAI Embeddings (`text-embedding-ada-002`) or SentenceTransformers. Top courses are recommended using three modes:
 	- **Semantic (Embedding-based) Search:** Ranks courses by embedding similarity and tag preferences.
 	- **Keyword Search:** Ranks courses by keyword and tag matches in title, description, and tags.
 	- **Hybrid Search:** Combines both semantic and keyword scores for more robust recommendations.
@@ -16,10 +16,10 @@ This application provides intelligent course recommendations and career learning
 
 ### GenAI Techniques
 
--- **Embedding-Based Search:** User profile and course descriptions are converted to embeddings for semantic similarity search using OpenAI `text-embedding-ada-002` or SentenceTransformers.
--- **Keyword Search:** Uses keyword and tag matching for fast, interpretable recommendations.
--- **Hybrid Search:** Combines semantic and keyword-based scores for improved personalization and robustness.
--- **Retrieval-Augmented Generation (RAG):** For Q&A, relevant knowledge base chunks are retrieved and used as context for LLM (OpenAI GPT-4o) or rule-based answers.
+- **Embedding-Based Search:** User profile and course descriptions are converted to embeddings for semantic similarity search using OpenAI `text-embedding-ada-002` or SentenceTransformers.
+- **Keyword Search:** Uses keyword and tag matching for fast, interpretable recommendations.
+- **Hybrid Search:** Combines semantic and keyword-based scores for improved personalization and robustness.
+- **Retrieval-Augmented Generation (RAG):** For Q&A, relevant knowledge base chunks are retrieved and used as context for LLM (OpenAI GPT-4o) or rule-based answers.
 
 ### Feedback Loop
 
