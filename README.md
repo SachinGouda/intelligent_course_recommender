@@ -18,10 +18,15 @@ This repo has **two branches** to demonstrate evolution:
   - Adds OpenAI integration:  
     - `text-embedding-ada-002` embeddings.  
     - GPT-4o chat completion for Q&A (with local fallback).  
-  - Shows rationale scores and improved feedback loop.  
+  - Shows rationale scores and improved feedback loop. 
+  - Supports three search modes:
+    - **Semantic (Embedding-based) Search**: Ranks courses by embedding similarity and tag preferences.
+    - **Keyword Search**: Ranks courses by keyword and tag matches in title, description, and tags.
+    - **Hybrid Search**: Combines both semantic and keyword scores for robust recommendations.
+  - **Works with or without OpenAI API key**: If no key is provided, falls back to local models and logic automatically.
 
-👉 Use `main` for a local-only.  
-👉 Use `openai-enhanced` for the richer version.
+👉 Use `main` for a local-only experience.  
+👉 Use `openai-enhanced` for the richer version (local or OpenAI-enabled).
 
 ---
 
